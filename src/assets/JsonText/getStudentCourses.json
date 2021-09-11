@@ -1,0 +1,66 @@
+[
+  {
+    "HomeWorkId": "",
+    "CoursesName": "HTML/CSS",
+    "HomeWorkOne": "7",
+    "HomeWorkTow": "8",
+    "HomeWorkThree": "8",
+    "HomeWorkBig": "14"
+  },
+  {
+    "HomeWorkId": "",
+    "CoursesName": "JavaScript",
+    "HomeWorkOne": "4",
+    "HomeWorkTow": "3",
+    "HomeWorkThree": "6",
+    "HomeWorkBig": "15"
+  },
+  {
+    "HomeWorkId": "",
+    "CoursesName": "Java/Spring",
+    "HomeWorkOne": "7",
+    "HomeWorkTow": "5",
+    "HomeWorkThree": "9",
+    "HomeWorkBig": "17"
+  },
+  {
+    "HomeWorkId": "",
+    "CoursesName": "TypeScript",
+    "HomeWorkOne": "8",
+    "HomeWorkTow": "4",
+    "HomeWorkThree": "6",
+    "HomeWorkBig": "12"
+  },
+  {
+    "HomeWorkId": "",
+    "CoursesName": "Angular",
+    "HomeWorkOne": "5",
+    "HomeWorkTow": "7",
+    "HomeWorkThree": "4",
+    "HomeWorkBig": "11"
+  },
+  {
+    "HomeWorkId": "",
+    "CoursesName": "MyBatis",
+    "HomeWorkOne": "4",
+    "HomeWorkTow": "6",
+    "HomeWorkThree": "9",
+    "HomeWorkBig": "16"
+  },
+  {
+    "HomeWorkId": "",
+    "CoursesName": "SQL",
+    "HomeWorkOne": "5",
+    "HomeWorkTow": "6",
+    "HomeWorkThree": "8",
+    "HomeWorkBig": "16"
+  },
+  {
+    "HomeWorkId": "",
+    "CoursesName": "Junit",
+    "HomeWorkOne": "6",
+    "HomeWorkTow": "4",
+    "HomeWorkThree": "7",
+    "HomeWorkBig": "19"
+  }
+]

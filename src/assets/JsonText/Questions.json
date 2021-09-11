@@ -1,0 +1,31 @@
+[
+  {
+
+    "QuestionsId": "num1ber",
+    "QuestionsTitle": "string",
+    "QuestionsTest": "string",
+    "QuestionsAuthor": "string",
+    "QuestionsTime": "string",
+    "QuestionsType": "1",
+    "AuthorName": "张家捃",
+    "AuthorClass": "软件17005",
+    "Html":"1",
+    "Js":"1",
+    "Java":"1",
+    "Ts":"1",
+    "Angular":"1",
+    "MyBatis":"1",
+    "SQL":"1",
+    "Junit":"1",
+    "Answer":[
+      {
+        "AnswerName":"张家捃",
+        "AnswerTest":"123"
+      },
+      {
+        "AnswerName":"啦啦啦",
+        "AnswerTest":"123"
+      }
+    ]
+  }
+]

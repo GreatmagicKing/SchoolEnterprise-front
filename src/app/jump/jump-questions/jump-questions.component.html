@@ -1,0 +1,97 @@
+
+
+<div class="rbox">
+  <div class="row" *ngFor="let item of qDetails" [(ngModel)]="qDetails" ngDefaultControl>
+    <div class="col-md-3 col-background">
+      <div class="col-md">
+        <div class="col-md">
+          {{item.authorName}}
+        </div>
+        <div class="col-md">
+
+        </div>
+      </div>
+      <div class="col-md">
+        <table class="table table-borderless table-sm">
+          <thead>
+            <tr>
+              <th scope="col">HTML</th>
+              <th scope="col">JS</th>
+              <th scope="col">Java</th>
+              <th scope="col">TS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">{{item.html}}</th>
+              <td>{{item.js}}</td>
+              <td>{{item.java}}</td>
+              <td>{{item.ts}}</td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr>
+              <th scope="col">Angular</th>
+              <th scope="col">MyBatis</th>
+              <th scope="col">SQL</th>
+              <th scope="col">Junit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">{{item.angular}}</th>
+              <td>{{item.myBatis}}</td>
+              <td>{{item.sql}}</td>
+              <td>{{item.junit}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="col-background">
+        <h2>{{item.questionsTitle}}</h2>
+        <div class="col-md question-inform">
+          <span class="badge badge-pill badge-primary" style="font-size: 12px;">基本信息</span>
+          <span>作者:{{item.authorName}}</span><span>时间:{{item.questionsTime}}</span>
+        </div>
+        <div class="col-md">
+          <p>
+            {{item.questionsData}}
+          </p>
+        </div>
+      </div>
+      <div class="col-background " >
+        <div class="col-md answer">
+          <i nz-icon nzType="message" nzTheme="twotone"  style="font-size: 24px;"></i>
+          <span class="badge badge-pill badge-secondary" style="font-size: 12px;">解答</span>
+        </div>
+        <div class="col-md answer" *ngFor="let item2 of item.answer" >
+          <div>
+            <nz-avatar
+            nzText="{{item2.answerName[0]}}"
+            nzSize="default"
+            style="background-color: #f56a00"
+          ></nz-avatar>
+            <span>{{item2.answerName}}</span>
+          </div>
+          <p>
+            {{item2.answerData}}
+          </p>
+        </div>
+      </div>
+      <div class="col-background ">
+        <div class="col-md answer">
+          <span class="badge badge-pill badge-success" style="font-size: 12px;">回复</span>
+          <button type="button" class="btn btn-success" (click)="setAnswer()">提交</button>
+        </div>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">内容</span>
+          </div>
+          <textarea class="form-control" aria-label="With textarea" [(ngModel)]="Data"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

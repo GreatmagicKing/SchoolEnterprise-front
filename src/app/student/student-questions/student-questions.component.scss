@@ -1,0 +1,54 @@
+.tag-active {
+  a{
+    color:#49af4f;
+  }
+  border-left: 4px solid #49af4f;
+}
+.flex-column {
+  >li :hover{
+    color:#49af4f;
+    cursor: pointer;
+  }
+}
+h4{
+  cursor: pointer;
+}
+.flex-column{
+  .title{
+    font-size: larger;
+  }
+  text-align: center;
+
+}
+.questions-box{
+  padding: 10px 24px 10px 24px;
+  border-bottom: 1px solid #E6E6E6;
+}
+p{
+  line-height: 25px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}
+.box-none{
+  display: none;
+}
+.box-block{
+  display: block;
+}
+
+.q-title{
+  height: 20px;
+  margin-bottom: 50px;;
+}
+
+.q-data{
+  height: 200px;
+}
+.tw{
+  font-size: larger;
+}
+.select{
+  margin-top: 10px;
+}
+

@@ -1,0 +1,39 @@
+.tag-active {
+  a{
+    color:#49af4f;
+  }
+  border-left: 4px solid #49af4f;
+}
+.flex-column {
+  >li :hover{
+    color:#49af4f;
+    cursor: pointer;
+  }
+}
+h4{
+  cursor: pointer;
+}
+.flex-column{
+  .title{
+    font-size: larger;
+  }
+  text-align: center;
+
+}
+.box-none{
+  display: none;
+}
+.box-block{
+  display: block;
+}
+.table{
+  text-align: center;
+  tbody{
+    tr{
+        td>a:hover{
+         color:#49af4f;
+         cursor: pointer;
+        }
+    }
+  }
+}

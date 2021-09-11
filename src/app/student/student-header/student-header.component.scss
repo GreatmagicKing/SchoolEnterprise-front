@@ -1,0 +1,26 @@
+
+.navbar-collapse{
+  display: flex; //设置父元素flex属性
+  justify-content: center;//左右居中
+  align-items: center;//上下居中
+}
+li a{
+  font-size: larger;
+}
+li{
+  color:#49af4f;
+  border-bottom: 4px solid #f8f9fa;
+}
+.tag-active {
+  a{
+    color:#49af4f;
+  }
+  border-bottom: 4px solid #49af4f;
+}
+.navbar-nav {
+  >li :hover{
+    color:#49af4f;
+    cursor: pointer;
+  }
+}
+

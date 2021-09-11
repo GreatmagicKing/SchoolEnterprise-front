@@ -1,0 +1,79 @@
+<div nz-row>
+  <div nz-col nzSpan="4">
+    <ul nz-menu nzMode="inline">
+      <li nz-menu-item class="text-center" (click)="showTable('1')">人员添加</li>
+      <!-- <li nz-menu-item class="text-center" (click)="showTable('2')">教师管理</li> -->
+    </ul>
+  </div>
+  <div nz-col nzSpan="20">
+    <div class="box-none" [ngClass]="{'box-block': type=='1'}" >
+      <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <div nz-row class="userAddBox">
+          <div nz-col [nzSpan]="7">
+            <nz-form-item nz-row nzJustify="end">
+              <nz-form-label [nzSpan]="5">角色</nz-form-label>
+              <nz-form-control [nzSpan]="12">
+                <nz-select [(ngModel)]="userTypeValue" id="userType" formControlName="userType">
+                  <!-- <nz-option nzValue="teacher" nzLabel="teacher"></nz-option> -->
+                  <nz-option nzValue="1" nzLabel="student"></nz-option>
+                  <nz-option nzValue="4" nzLabel="school"></nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col [nzSpan]="7">
+            <nz-form-item nzJustify="center">
+              <nz-form-label [nzSpan]="5">用户ID</nz-form-label>
+              <nz-form-control [nzSpan]="12" [nzErrorTip]="errorTpluserId">
+                <input nz-input id="userId" formControlName="userId" [(ngModel)]="userId"/>
+                <ng-template #errorTpluserId let-control>
+                  <ng-container *ngIf="control.hasError('required')">
+                    Please confirm your userId!
+                  </ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col [nzSpan]="7">
+            <nz-form-item nzJustify="start">
+              <nz-form-label [nzSpan]="5">用户名</nz-form-label>
+              <nz-form-control [nzSpan]="12" [nzErrorTip]="errorTpluserName">
+                <input nz-input id="userName" formControlName="userName" [(ngModel)]="userName"/>
+                <ng-template #errorTpluserName let-control>
+                  <ng-container *ngIf="control.hasError('required')">
+                    Please confirm your userName!
+                  </ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col [nzSpan]="3">
+            <button nz-button nzType="primary" (click)="setUserList()">提交</button>
+          </div>
+        </div>
+      </form>
+      <nz-table #basicTable [nzData]="listOfData" [(ngModel)]="listOfData">
+        <thead>
+          <tr>
+            <th nzAlign="center">ID</th>
+            <th nzAlign="center">Name</th>
+            <th nzAlign="center">Role</th>
+            <!-- <th>Action</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of basicTable.data">
+            <td nzAlign="center">{{ data.userId }}</td>
+            <td nzAlign="center">{{ data.userName }}</td>
+            <td nzAlign="center">{{ data.role }}</td>
+            <!-- <td></td> -->
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+    <!-- <div class="box-none" [ngClass]="{'box-block': type=='2'}">
+      1111111111111
+    </div> -->
+
+  </div>
+</div>

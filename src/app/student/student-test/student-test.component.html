@@ -1,0 +1,205 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <ul class="nav flex-column">
+        <li class="nav-item title">
+          <a class="nav-link">测试题目</a>
+        </li>
+        <li class="nav-item" [ngClass]="{'tag-active': type=='1'}">
+          <a class="nav-link" (click)="showTest('1')">HTML/CSS</a>
+        </li>
+        <li class="nav-item" [ngClass]="{'tag-active': type=='2'}">
+          <a class="nav-link" (click)="showTest('2')">JavaScript</a>
+        </li>
+        <li class="nav-item" [ngClass]="{'tag-active': type=='3'}">
+          <a class="nav-link" (click)="showTest('3')">Java/Spring</a>
+        </li>
+        <li class="nav-item" [ngClass]="{'tag-active': type=='4'}">
+          <a class="nav-link" (click)="showTest('4')">TypeScript</a>
+        </li>
+        <li class="nav-item" [ngClass]="{'tag-active': type=='5'}">
+          <a class="nav-link" (click)="showTest('5')">Angular</a>
+        </li>
+        <li class="nav-item" [ngClass]="{'tag-active': type=='6'}">
+          <a class="nav-link" (click)="showTest('6')">MyBatis</a>
+        </li>
+        <li class="nav-item" [ngClass]="{'tag-active': type=='7'}">
+          <a class="nav-link" (click)="showTest('7')">SQL</a>
+        </li>
+        <li class="nav-item" [ngClass]="{'tag-active': type=='8'}">
+          <a class="nav-link" (click)="showTest('8')">Junit</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-10">
+      <div class="box-none" [ngClass]="{'box-block': type=='1'}">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">编号</th>
+              <th scope="col">作业</th>
+              <th scope="col">状态</th>
+              <th scope="col">详情</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of testList">
+            <tr *ngIf="item.testType=='1'">
+              <th scope="row">{{item.testId}}</th>
+              <td>{{item.testName}}</td>
+              <td *ngIf="item.state=='1'">已提交</td>
+              <td *ngIf="item.state=='0'||item.state==null">未提交</td>
+              <td><a (click)="jumpTest(item.testId,item.testType,item.testPart)">查看详情</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="box-none" [ngClass]="{'box-block': type=='2'}">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">编号</th>
+              <th scope="col">作业</th>
+              <th scope="col">状态</th>
+              <th scope="col">详情</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of testList">
+            <tr *ngIf="item.testType=='2'">
+              <th scope="row">{{item.testId}}</th>
+              <td>{{item.testName}}</td>
+              <td *ngIf="item.state=='1'">已提交</td>
+              <td *ngIf="item.state=='0'||item.state==null">未提交</td>
+              <td><a (click)="jumpTest(item.testId,item.testType,item.testPart)">查看详情</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="box-none" [ngClass]="{'box-block': type=='3'}">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">编号</th>
+              <th scope="col">作业</th>
+              <th scope="col">状态</th>
+              <th scope="col">详情</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of testList">
+            <tr *ngIf="item.testType=='3'">
+              <th scope="row">{{item.testId}}</th>
+              <td>{{item.testName}}</td>
+              <td *ngIf="item.state=='1'">已提交</td>
+              <td *ngIf="item.state=='0'||item.state==null">未提交</td>
+              <td><a (click)="jumpTest(item.testId,item.testType,item.testPart)">查看详情</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="box-none" [ngClass]="{'box-block': type=='4'}">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">编号</th>
+              <th scope="col">作业</th>
+              <th scope="col">状态</th>
+              <th scope="col">详情</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of testList">
+            <tr *ngIf="item.testType=='4'">
+              <th scope="row">{{item.testId}}</th>
+              <td>{{item.testName}}</td>
+              <td *ngIf="item.state=='1'">已提交</td>
+              <td *ngIf="item.state=='0'||item.state==null">未提交</td>
+              <td><a (click)="jumpTest(item.testId,item.testType,item.testPart)">查看详情</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="box-none" [ngClass]="{'box-block': type=='5'}">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">编号</th>
+              <th scope="col">作业</th>
+              <th scope="col">状态</th>
+              <th scope="col">详情</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of testList">
+            <tr *ngIf="item.testType=='5'">
+              <th scope="row">{{item.testId}}</th>
+              <td>{{item.testName}}</td>
+              <td *ngIf="item.state=='1'">已提交</td>
+              <td *ngIf="item.state=='0'||item.state==null">未提交</td>
+              <td><a (click)="jumpTest(item.testId,item.testType,item.testPart)">查看详情</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="box-none" [ngClass]="{'box-block': type=='6'}">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">编号</th>
+              <th scope="col">作业</th>
+              <th scope="col">状态</th>
+              <th scope="col">详情</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of testList">
+            <tr *ngIf="item.testType=='6'">
+              <th scope="row">{{item.testId}}</th>
+              <td>{{item.testName}}</td>
+              <td *ngIf="item.state=='1'">已提交</td>
+              <td *ngIf="item.state=='0'||item.state==null">未提交</td>
+              <td><a (click)="jumpTest(item.testId,item.testType,item.testPart)">查看详情</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="box-none" [ngClass]="{'box-block': type=='7'}">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">编号</th>
+              <th scope="col">作业</th>
+              <th scope="col">状态</th>
+              <th scope="col">详情</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of testList">
+            <tr *ngIf="item.testType=='7'">
+              <th scope="row">{{item.testId}}</th>
+              <td>{{item.testName}}</td>
+              <td *ngIf="item.state=='1'">已提交</td>
+              <td *ngIf="item.state=='0'||item.state==null">未提交</td>
+              <td><a (click)="jumpTest(item.testId,item.testType,item.testPart)">查看详情</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="box-none" [ngClass]="{'box-block': type=='8'}">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">编号</th>
+              <th scope="col">作业</th>
+              <th scope="col">状态</th>
+              <th scope="col">详情</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of testList">
+            <tr *ngIf="item.testType=='8'">
+              <th scope="row">{{item.testId}}</th>
+              <td>{{item.testName}}</td>
+              <td *ngIf="item.state=='1'">已提交</td>
+              <td *ngIf="item.state=='0'||item.state==null">未提交</td>
+              <td><a (click)="jumpTest(item.testId,item.testType,item.testPart)">查看详情</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

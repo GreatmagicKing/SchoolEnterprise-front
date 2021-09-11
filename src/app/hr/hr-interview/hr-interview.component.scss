@@ -1,0 +1,29 @@
+
+.text-center{
+  text-align:center;
+  font-size: large;
+}
+.box-block{
+  display: block !important;
+}
+.box-none{
+  display: none;
+}
+[nz-button] {
+  margin-right: 8px;
+  margin-bottom: 12px;
+  margin-top: 18px;
+}
+
+.mg{
+  margin-top: 16px;
+}
+nz-date-picker,
+nz-month-picker,
+nz-range-picker,
+nz-week-picker {
+        margin: 0 8px 12px 0;
+}
+nz-select {
+  width: 100px;
+}

@@ -1,0 +1,30 @@
+<div nz-row>
+  <div nz-col nzSpan="4">
+    <ul nz-menu nzMode="inline">
+      <li nz-menu-item class="text-center" (click)="showTable('1')">我的问题</li>
+      <!-- <li nz-menu-item class="text-center" (click)="showTable('2')">#######</li> -->
+    </ul>
+  </div>
+  <div nz-col nzSpan="20">
+    <div class="box-none" [ngClass]="{'box-block': type=='1'}">
+      <div *ngFor="let item of questions">
+        <div nz-row class="questions-box">
+          <div nz-col nzSpan="12">
+            <h4 (click)="jumpQuestions(item.questionsId)">{{item.questionsTitle}}</h4>
+          </div>
+          <div nz-col nzSpan="12">
+            <div nz-row>
+              <div nz-col nzSpan="8"></div>
+              <div nz-col nzSpan="4" class="center">{{item.questionsAuthor}}</div>
+              <div nz-col nzSpan="12" class="center">{{item.questionsTime}}</div>
+            </div>
+          </div>
+          <div nz-col nzSpan="24">
+            <p>{{item.questionsData}}</p>
+          </div>
+          <nz-divider></nz-divider>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

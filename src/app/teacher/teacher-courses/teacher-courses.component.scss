@@ -1,0 +1,19 @@
+
+.text-center{
+  text-align:center;
+  font-size: large;
+}
+.box-block{
+  display: block !important;
+}
+.box-none{
+  display: none;
+}
+[nz-button] {
+  margin-right: 8px;
+  margin-bottom: 12px;
+}
+.span:hover{
+  color:blue;
+  cursor: pointer;
+}

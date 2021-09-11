@@ -1,0 +1,71 @@
+<div nz-row>
+  <div nz-col nzSpan="4">
+    <ul nz-menu nzMode="inline">
+      <li nz-menu-item class="text-center" (click)="showTable('1')">学生评级</li>
+      <li nz-menu-item class="text-center" (click)="showTable('2')">录取状态</li>
+      <li nz-menu-item class="text-center" (click)="showTable('3')">成绩评估</li>
+      <li nz-menu-item class="text-center" (click)="showTable('4')">录取率</li>
+    </ul>
+  </div>
+  <div nz-col nzSpan="20">
+    <div class="box-none" [ngClass]="{'box-block': type=='1'}">
+      <nz-table #studentRateTable [nzData]="studentRate">
+        <thead>
+          <tr>
+            <th nzAlign="center">学号</th>
+            <th nzAlign="center">姓名</th>
+            <th nzAlign="center">评级</th>
+            <th nzAlign="center">详情</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let data of studentRateTable.data ; let i = index;">
+            <td nzAlign="center">{{ data.userId }}</td>
+            <td nzAlign="center">{{ data.userName }}</td>
+            <td nzAlign="center">{{ data.rate }}</td>
+            <td nzAlign="center" (click)="showStudentDetails(data.userId)">查看</td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+    <div class="box-none" [ngClass]="{'box-block': type=='2'}">
+      <nz-table #interviewRTable [nzData]="interviewR">
+        <thead>
+          <tr>
+            <th nzAlign="center">学号</th>
+            <th nzAlign="center">姓名</th>
+            <th nzAlign="center">第一次面试</th>
+            <th nzAlign="center">第二次面试</th>
+            <th nzAlign="center">录取结果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of interviewRTable.data ; let i = index;" [(ngModel)]="interviewR" ngDefaultControl>
+            <td nzAlign="center">{{ data.userId }}</td>
+            <td nzAlign="center">{{ data.userName }}</td>
+            <td nzAlign="center" *ngIf="data.stateOne==null">未面试</td>
+            <td nzAlign="center" *ngIf="data.stateOne=='0'">未面试</td>
+            <td nzAlign="center" *ngIf="data.stateOne=='1'">通过</td>
+            <td nzAlign="center" *ngIf="data.stateOne=='2'">未通过</td>
+            <td nzAlign="center" *ngIf="data.stateTwo==null">未面试</td>
+            <td nzAlign="center" *ngIf="data.stateTwo=='0'">未面试</td>
+            <td nzAlign="center" *ngIf="data.stateTwo=='1'">通过</td>
+            <td nzAlign="center" *ngIf="data.stateTwo=='2'">未通过</td>
+            <td nzAlign="center" *ngIf="data.results==null">未处理</td>
+            <td nzAlign="center" *ngIf="data.results=='0'">未处理</td>
+            <td nzAlign="center" *ngIf="data.results=='1'">录取</td>
+            <td nzAlign="center" *ngIf="data.results=='2'">未录取</td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+    <div class="box-none" [ngClass]="{'box-block': type=='3'}">
+      <div id="averageScoreHome" style="width: 1200px; height: 600px;margin: 20px;"></div>
+      <div id="averageScoreTest" style="width: 1200px; height: 600px;margin: 20px;"></div>
+    </div>
+    <div class="box-none" [ngClass]="{'box-block': type=='4'}">
+      <div id="acceptanceRate" style="width: 1200px; height: 600px;margin: 20px;"></div>
+    </div>
+  </div>
+</div>

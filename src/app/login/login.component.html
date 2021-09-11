@@ -1,0 +1,31 @@
+<!-- <app-header></app-header> -->
+<div nz-row>
+  <div nz-col nzSpan="4"></div>
+  <div nz-col nzSpan="8" class="imgright">
+    <img src="assets/img/dr.jpg"/>
+  </div>
+
+  <div nz-col nzSpan="8">
+
+    <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+      <h3>登录</h3>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="请输入用户名">
+          <nz-input-group nzPrefixIcon="user">
+            <input type="text" nz-input formControlName="userName" placeholder="Username" [(ngModel)]="userId"/>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="请输入密码">
+          <nz-input-group nzPrefixIcon="lock">
+            <input type="password" nz-input formControlName="password" placeholder="Password" [(ngModel)]="passWord"/>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <button nz-button class="login-form-button login-form-margin" (click)="userLogin(userId,passWord)" [nzType]="'primary'" [disabled]="!validateForm.valid">登录</button>
+      <!-- <button nz-button (click)="user(userId,passWord)" [nzType]="'primary'">测试</button> -->
+    </form>
+  </div>
+  <div nz-col nzSpan="4"></div>
+</div>

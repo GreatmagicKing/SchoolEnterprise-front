@@ -1,0 +1,171 @@
+<div nz-row>
+  <div nz-col nzSpan="4">
+    <ul nz-menu nzMode="inline">
+      <li nz-menu-item class="text-center" (click)="showTable('1')">发布测试</li>
+      <li nz-menu-item class="text-center" (click)="showTable('2')">查看成绩</li>
+      <li nz-menu-item class="text-center" (click)="showTable('3')">创建测试</li>
+      <!-- <li nz-menu-item class="text-center" (click)="showTable('4')">添加题目</li> -->
+    </ul>
+  </div>
+  <div nz-col nzSpan="20">
+    <div class="box-none" [ngClass]="{'box-block': type=='1'}" >
+      <nz-table  [nzData]="testList"  >
+        <thead>
+          <tr>
+            <th nzAlign="center">编号</th>
+            <th nzAlign="center">作业</th>
+            <th nzAlign="center">状态</th>
+            <th nzAlign="center">发布</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let data of testList ; let i = index;" >
+            <td nzAlign="center" >{{ data.testId }}</td>
+            <td nzAlign="center" >{{ data.testName }}</td>
+            <td nzAlign="center" [(ngModel)]="testList[i].state" ngDefaultControl>{{ data.state }}</td>
+            <td nzAlign="center" >
+              <span (click)="release(data.testId,i)">发布</span>
+              <nz-divider nzType="vertical"></nz-divider>
+              <span (click)="revoke(data.testId,i)">取消</span>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+    <div class="box-none" [ngClass]="{'box-block': type=='2'}">
+      <nz-table #studentScoreTable [nzData]="studentScore"  >
+        <thead>
+          <tr>
+            <th nzAlign="center">学号</th>
+            <th nzAlign="center">姓名</th>
+            <th nzAlign="center">第一次测试</th>
+            <th nzAlign="center">第二次测试</th>
+            <th nzAlign="center">第三次测试</th>
+            <th nzAlign="center">最终测试</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let data of studentScoreTable.data ; let i = index;" >
+            <td nzAlign="center" >{{ data.userId }}</td>
+            <td nzAlign="center" >{{ data.userName }}</td>
+            <td nzAlign="center" >{{ data.homeworkOne }}</td>
+            <td nzAlign="center" >{{ data.homeworkTwo }}</td>
+            <td nzAlign="center" >{{ data.homeworkThree }}</td>
+            <td nzAlign="center" >{{ data.homeworkBig }}</td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+    <div class="box-none" [ngClass]="{'box-block': type=='3'}">
+        <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+          <div nz-row class="userAddBox">
+            <!-- <div nz-col [nzSpan]="7" [(ngModel)]="teacherCourse">
+              <nz-form-item nz-row nzJustify="end">
+                <nz-form-label [nzSpan]="5">测试类型</nz-form-label>
+                <nz-form-control [nzSpan]="12">
+                  <nz-select [(ngModel)]="teacherCourse" id="testType" formControlName="testType">
+                    <nz-option [nzValue]="teacherCourse.courseId" [nzLabel]="teacherCourse.courseName"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            <p >测试类型:{{ teacherCourse.courseName }}</p>
+            </div> -->
+            <div nz-col [nzSpan]="10">
+              <nz-form-item nzJustify="center">
+                <nz-form-label [nzSpan]="5">测试部分</nz-form-label>
+                <nz-form-control [nzSpan]="12">
+                  <!-- <input nz-input id="testPart" formControlName="testPart" [(ngModel)]="testPart"/> -->
+                  <!-- <ng-template #errorTpluserId let-control>
+                    <ng-container *ngIf="control.hasError('required')">
+                      Please confirm your userId!
+                    </ng-container> -->
+                    <nz-select [(ngModel)]="testPart" id="testPart" formControlName="testPart">
+                      <nz-option nzValue="1" nzLabel="第一部分"></nz-option>
+                      <nz-option nzValue="2" nzLabel="第二部分"></nz-option>
+                      <nz-option nzValue="3" nzLabel="第三部分"></nz-option>
+                      <nz-option nzValue="4" nzLabel="最终测试"></nz-option>
+                    </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col [nzSpan]="10">
+              <nz-form-item nzJustify="start">
+                <nz-form-label [nzSpan]="5">测试名</nz-form-label>
+                <nz-form-control [nzSpan]="12" [nzErrorTip]="errorTpluserName">
+                  <input nz-input id="testName" formControlName="testName" [(ngModel)]="testName"/>
+                  <ng-template #errorTpluserName let-control>
+                    <ng-container *ngIf="control.hasError('required')">
+                      Please confirm your userName!
+                    </ng-container>
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col [nzSpan]="3">
+              <button nz-button nzType="primary" (click)="setTestList()">提交</button>
+            </div>
+          </div>
+        </form>
+        <nz-table #basicTable [nzData]="testList" [(ngModel)]="testList">
+          <thead>
+            <tr>
+              <th nzAlign="center">测试ID</th>
+              <th nzAlign="center">测试类型</th>
+              <th nzAlign="center">测试部分</th>
+              <th nzAlign="center">测试名</th>
+              <th nzAlign="center">编辑测试</th>
+              <!-- <th>Action</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of testList; let i = index;">
+              <td nzAlign="center">{{ data.testId }}</td>
+              <td nzAlign="center" [(ngModel)]="teacherCourse">{{ teacherCourse.courseName }}</td>
+              <td nzAlign="center">{{ data.testPart }}</td>
+              <td nzAlign="center">{{ data.testName }}</td>
+              <td nzAlign="center" (click)="getTestProblem(data.testId)" >编辑</td>
+              <!-- <td></td> -->
+            </tr>
+          </tbody>
+        </nz-table>
+    </div>
+    <div class="box-none" [ngClass]="{'box-block': type=='4'}">
+      <nz-divider nzText="编辑测试"></nz-divider>
+      <nz-collapse class="testW">
+        <nz-collapse-panel *ngFor="let panel of testProblem; let i = index;" [nzHeader]="panel.problemId">
+          <p style="margin:0;">
+            问题内容：
+          </p>
+          <textarea rows="1" nz-input [(ngModel)]="panel.testData"></textarea>
+          <p style="margin:0;">
+            选项A：
+          </p>
+          <textarea rows="1" nz-input [(ngModel)]="panel.testA"></textarea>
+          <p style="margin:0;">
+            选项B：
+          </p>
+          <textarea rows="1" nz-input [(ngModel)]="panel.testB"></textarea>
+          <p style="margin:0;">
+            选项C：
+          </p>
+          <textarea rows="1" nz-input [(ngModel)]="panel.testC"></textarea>
+          <p style="margin:0;">
+            选项D：
+          </p>
+          <textarea rows="1" nz-input [(ngModel)]="panel.testD"></textarea>
+          <div class="testR">
+            正确答案：<nz-select [(ngModel)]="panel.testResult" id="testResult" class="select">
+              <nz-option nzValue="A" nzLabel="A"></nz-option>
+              <nz-option nzValue="B" nzLabel="B"></nz-option>
+              <nz-option nzValue="C" nzLabel="C"></nz-option>
+              <nz-option nzValue="D" nzLabel="D"></nz-option>
+            </nz-select>
+            <button nz-button nzType="primary" (click)="setTestDetail(panel)">提交</button>
+          </div>
+        </nz-collapse-panel>
+      </nz-collapse>
+    </div>
+  </div>
+</div>

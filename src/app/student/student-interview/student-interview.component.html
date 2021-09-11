@@ -1,0 +1,76 @@
+
+<div nz-row>
+  <div nz-col nzSpan="4">
+    <ul nz-menu nzMode="inline">
+      <li nz-menu-item class="text-center" (click)="showTable('1')">第一次面试</li>
+      <li nz-menu-item class="text-center" (click)="showTable('2')">第二次面试</li>
+      <li nz-menu-item class="text-center" (click)="showTable('3')">最终结果</li>
+    </ul>
+  </div>
+  <div nz-col nzSpan="20">
+    <div class="box-none" [ngClass]="{'box-block': type=='1'}" >
+      <nz-table  [nzData]="recruitOne"  >
+        <thead>
+          <tr>
+            <th nzAlign="center">学号</th>
+            <th nzAlign="center">姓名</th>
+            <th nzAlign="center">面试地点</th>
+            <th nzAlign="center">面试时间</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let data of recruitOne ; let i = index;" [(ngModel)]="recruitOne" ngDefaultControl>
+            <td nzAlign="center" >{{ data.userId }}</td>
+            <td nzAlign="center" >{{ data.userName }}</td>
+            <td nzAlign="center" >{{ data.place }}</td>
+            <td nzAlign="center" >{{ data.time }}</td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+    <div class="box-none" [ngClass]="{'box-block': type=='2'}">
+      <nz-table  [nzData]="recruitTwo"  >
+        <thead>
+          <tr>
+            <th nzAlign="center">学号</th>
+            <th nzAlign="center">姓名</th>
+            <th nzAlign="center">面试地点</th>
+            <th nzAlign="center">面试时间</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let data of recruitTwo ; let i = index;" [(ngModel)]="recruitTwo" ngDefaultControl>
+            <td nzAlign="center" >{{ data.userId }}</td>
+            <td nzAlign="center" >{{ data.userName }}</td>
+            <td nzAlign="center" >{{ data.place }}</td>
+            <td nzAlign="center" >{{ data.time }}</td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+    <div class="box-none" [ngClass]="{'box-block': type=='3'}">
+      <nz-table  [nzData]="recruitResult"  >
+        <thead>
+          <tr>
+            <th nzAlign="center">学号</th>
+            <th nzAlign="center">姓名</th>
+            <th nzAlign="center">最终结果</th>
+
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let data of recruitResult ; let i = index;" [(ngModel)]="recruitResult" ngDefaultControl>
+            <td nzAlign="center" >{{ data.userId }}</td>
+            <td nzAlign="center" >{{ data.userName }}</td>
+            <td nzAlign="center" *ngIf="data.state=='0'">未公布</td>
+            <td nzAlign="center" *ngIf="data.state=='1'">通过</td>
+            <td nzAlign="center" *ngIf="data.state=='2'">未通过</td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </div>
+</div>

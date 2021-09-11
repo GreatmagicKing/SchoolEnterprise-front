@@ -1,0 +1,205 @@
+<div nz-row>
+  <div nz-col nzSpan="4">
+    <ul nz-menu nzMode="inline">
+      <li nz-submenu class="text-center" nzTitle="第一次面试">
+        <ul>
+          <li nz-menu-item class="text-center" (click)="showTable('1')">分配学生</li>
+          <li nz-menu-item class="text-center" (click)="showTable('2')">查看分配</li>
+        </ul>
+      </li>
+      <li nz-submenu class="text-center" nzTitle="第二次面试">
+        <ul>
+          <li nz-menu-item class="text-center" (click)="showTable('3')">分配学生</li>
+          <li nz-menu-item class="text-center" (click)="showTable('4')">查看分配</li>
+        </ul>
+      </li>
+      <li nz-submenu class="text-center" nzTitle="录取结果">
+        <ul>
+          <li nz-menu-item class="text-center" (click)="showTable('5')">发布结果</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div nz-col nzSpan="20">
+    <div class="box-none" [ngClass]="{'box-block': type=='1'}">
+      <nz-table #recruitTable  [nzData]="recruit">
+        <thead>
+          <tr>
+            <th nzAlign="center">学号</th>
+            <th nzAlign="center">姓名</th>
+            <th nzAlign="center">面试地点</th>
+            <th nzAlign="center">面试HR</th>
+            <th nzAlign="center">面试时间</th>
+            <th nzAlign="center">提交</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of recruitTable.data ; let i = index;" [(ngModel)]="recruit" ngDefaultControl>
+            <td nzAlign="center">{{ data.userId }}</td>
+            <td nzAlign="center">{{ data.userName }}</td>
+            <td nzAlign="center">
+              <nz-select nzShowSearch nzAllowClear nzPlaceHolder="面试地点"
+              [(ngModel)]="interviewPlace[i]" ngDefaultControl>
+                <nz-option nzLabel="A501" nzValue="A501"></nz-option>
+                <nz-option nzLabel="A502" nzValue="A502"></nz-option>
+                <nz-option nzLabel="A503" nzValue="A503"></nz-option>
+              </nz-select>
+            </td>
+            <td nzAlign="center">
+              <nz-select nzShowSearch nzAllowClear nzPlaceHolder="面试官"
+              [(ngModel)]="selectedValue[i]" ngDefaultControl>
+                <nz-option nzLabel="king" nzValue="hr01"></nz-option>
+                <nz-option nzLabel="junit" nzValue="hr02"></nz-option>
+                <nz-option nzLabel="petty" nzValue="hr03"></nz-option>
+              </nz-select>
+            </td>
+            <td nzAlign="center">
+              <nz-date-picker nzShowTime nzFormat="yyyy-MM-dd HH:mm:ss" [nzDisabledDate]="disabledDate"
+              nzPlaceHolder="Select Time" ngModel (nzOnOk)="onOk($event,i)" class="mg"></nz-date-picker>
+            </td>
+            <td nzAlign="center"><button nz-button nzType="primary"
+              (click)="setHrRecruit(data.userId,data.userName,i)">提交</button></td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+    <div class="box-none" [ngClass]="{'box-block': type=='2'}">
+      <nz-table #RecruitHrListTable [nzData]="getRecruitHrList">
+        <thead>
+          <tr>
+            <th nzAlign="center">学号</th>
+            <th nzAlign="center">姓名</th>
+            <th nzAlign="center">面试地点</th>
+            <th nzAlign="center">面试HR</th>
+            <th nzAlign="center">面试时间</th>
+            <th nzAlign="center">面试结果</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of RecruitHrListTable.data ; let i = index;" [(ngModel)]="getRecruitHrList" ngDefaultControl>
+            <td nzAlign="center">{{ data.userId }}</td>
+            <td nzAlign="center">{{ data.userName }}</td>
+            <td nzAlign="center">{{ data.place }}</td>
+            <td nzAlign="center">{{ data.teacher }}</td>
+            <td nzAlign="center">{{ data.time }}</td>
+            <td nzAlign="center" *ngIf="data.state=='0'">未面试</td>
+            <td nzAlign="center" *ngIf="data.state=='1'">通过</td>
+            <td nzAlign="center" *ngIf="data.state=='2'">未通过</td>
+
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+    <div class="box-none" [ngClass]="{'box-block': type=='3'}">
+      <nz-table #recruitTwoTable [nzData]="recruitTwo">
+        <thead>
+          <tr>
+            <th nzAlign="center">学号</th>
+            <th nzAlign="center">姓名</th>
+            <th nzAlign="center">面试地点</th>
+            <th nzAlign="center">面试老师</th>
+            <th nzAlign="center">面试时间</th>
+            <th nzAlign="center">提交</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of recruitTwoTable.data ; let i = index;" [(ngModel)]="recruitTwo" ngDefaultControl>
+            <td nzAlign="center">{{ data.userId }}</td>
+            <td nzAlign="center">{{ data.userName }}</td>
+            <td nzAlign="center">
+              <nz-select nzShowSearch nzAllowClear nzPlaceHolder="面试地点" [(ngModel)]="TinterviewPlace[i]" ngDefaultControl>
+                <nz-option nzLabel="A501" nzValue="A501"></nz-option>
+                <nz-option nzLabel="A502" nzValue="A502"></nz-option>
+                <nz-option nzLabel="A503" nzValue="A503"></nz-option>
+              </nz-select>
+            </td>
+            <td nzAlign="center">
+              <nz-select nzShowSearch nzAllowClear nzPlaceHolder="面试官" [(ngModel)]="TselectedValue[i]" ngDefaultControl>
+                <nz-option nzLabel="董老师" nzValue="teacher01"></nz-option>
+                <nz-option nzLabel="张老师" nzValue="teacher02"></nz-option>
+                <nz-option nzLabel="刘老师" nzValue="teacher03"></nz-option>
+                <nz-option nzLabel="宋老师" nzValue="teacher04"></nz-option>
+                <nz-option nzLabel="尚老师" nzValue="teacher05"></nz-option>
+                <nz-option nzLabel="李老师" nzValue="teacher06"></nz-option>
+                <nz-option nzLabel="陈老师" nzValue="teacher07"></nz-option>
+                <nz-option nzLabel="蒋老师" nzValue="teacher08"></nz-option>
+              </nz-select>
+            </td>
+            <td nzAlign="center">
+              <nz-date-picker nzShowTime nzFormat="yyyy-MM-dd HH:mm:ss" [nzDisabledDate]="disabledDate" nzPlaceHolder="Select Time" ngModel
+                 (nzOnOk)="onOk($event,i)" class="mg"></nz-date-picker>
+            </td>
+
+            <td nzAlign="center"><button nz-button nzType="primary" (click)="setTeacherRecruit(data.userId,data.userName,i)">提交</button></td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+    <div class="box-none" [ngClass]="{'box-block': type=='4'}">
+      <nz-table #RecruitTeacherListTable [nzData]="getRecruitTeacherList">
+        <thead>
+          <tr>
+            <th nzAlign="center">学号</th>
+            <th nzAlign="center">姓名</th>
+            <th nzAlign="center">面试地点</th>
+            <th nzAlign="center">面试老师</th>
+            <th nzAlign="center">面试时间</th>
+            <th nzAlign="center">面试结果</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of RecruitTeacherListTable.data ; let i = index;" [(ngModel)]="getRecruitTeacherList" ngDefaultControl>
+            <td nzAlign="center">{{ data.userId }}</td>
+            <td nzAlign="center">{{ data.userName }}</td>
+            <td nzAlign="center">{{ data.place }}</td>
+            <td nzAlign="center">{{ data.teacher }}</td>
+            <td nzAlign="center">{{ data.time }}</td>
+            <td nzAlign="center" *ngIf="data.state=='0'">未面试</td>
+            <td nzAlign="center" *ngIf="data.state=='1'">通过</td>
+            <td nzAlign="center" *ngIf="data.state=='2'">未通过</td>
+
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+    <div class="box-none" [ngClass]="{'box-block': type=='5'}">
+      <nz-table #interviewRTable [nzData]="interviewR">
+        <thead>
+          <tr>
+            <th nzAlign="center">学号</th>
+            <th nzAlign="center">姓名</th>
+            <th nzAlign="center">第一次面试</th>
+            <th nzAlign="center">第二次面试</th>
+            <th nzAlign="center">录取结果</th>
+            <th nzAlign="center">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of interviewRTable.data ; let i = index;" [(ngModel)]="interviewR" ngDefaultControl>
+            <td nzAlign="center">{{ data.userId }}</td>
+            <td nzAlign="center">{{ data.userName }}</td>
+            <td nzAlign="center" *ngIf="data.stateOne==null">未面试</td>
+            <td nzAlign="center" *ngIf="data.stateOne=='0'">未面试</td>
+            <td nzAlign="center" *ngIf="data.stateOne=='1'">通过</td>
+            <td nzAlign="center" *ngIf="data.stateOne=='2'">未通过</td>
+            <td nzAlign="center" *ngIf="data.stateTwo==null">未面试</td>
+            <td nzAlign="center" *ngIf="data.stateTwo=='0'">未面试</td>
+            <td nzAlign="center" *ngIf="data.stateTwo=='1'">通过</td>
+            <td nzAlign="center" *ngIf="data.stateTwo=='2'">未通过</td>
+            <td nzAlign="center" *ngIf="data.results==null">未处理</td>
+            <td nzAlign="center" *ngIf="data.results=='0'">未处理</td>
+            <td nzAlign="center" *ngIf="data.results=='1'">录取</td>
+            <td nzAlign="center" *ngIf="data.results=='2'">未录取</td>
+            <td nzAlign="center">
+              <button nz-button nzType="primary" (click)="setInterviewR(data.userId,'1',i)">录取</button>
+              <button nz-button nzType="primary" nzDanger (click)="setInterviewR(data.userId,'2',i)">未录取</button>
+            </td>
+
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </div>
+</div>

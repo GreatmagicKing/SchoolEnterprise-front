@@ -1,0 +1,97 @@
+
+<div nz-row>
+  <div nz-col nzSpan="4">
+    <ul nz-menu nzMode="inline">
+      <li nz-menu-item class="text-center" (click)="showTable('1')">录入成绩</li>
+      <!-- <li nz-menu-item class="text-center" (click)="showTable('2')">成绩分析</li> -->
+    </ul>
+  </div>
+  <div nz-col nzSpan="20">
+    <div class="box-none" [ngClass]="{'box-block': type=='1'}" >
+      <nz-table #StudentScoreTable [nzData]="StudentScoreData"  >
+        <thead>
+          <tr>
+            <th nzAlign="center">学号</th>
+            <th nzAlign="center">姓名</th>
+            <th nzAlign="center">第一次作业</th>
+            <th nzAlign="center">第二次作业</th>
+            <th nzAlign="center">第三次作业</th>
+            <th nzAlign="center">大作业</th>
+            <th nzAlign="center">录入成绩</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let data of StudentScoreTable.data ; let i = index;" >
+            <td nzAlign="center" >{{ data.userId }}</td>
+            <td nzAlign="center" >{{ data.userName }}</td>
+            <td nzAlign="center" [(ngModel)]="StudentScoreData[(StudentScoreTable.nzPageIndex-1)*10+i].homeworkOne" ngDefaultControl>{{ data.homeworkOne }}</td>
+            <td nzAlign="center" [(ngModel)]="StudentScoreData[(StudentScoreTable.nzPageIndex-1)*10+i].homeworkTwo" ngDefaultControl>{{ data.homeworkTwo }}</td>
+            <td nzAlign="center" [(ngModel)]="StudentScoreData[(StudentScoreTable.nzPageIndex-1)*10+i].homeworkThree" ngDefaultControl>{{ data.homeworkThree }}</td>
+            <td nzAlign="center" [(ngModel)]="StudentScoreData[(StudentScoreTable.nzPageIndex-1)*10+i].homeworkBig" ngDefaultControl>{{ data.homeworkBig }}</td>
+            <td class="span" nzAlign="center"  (click)="showModal((StudentScoreTable.nzPageIndex-1)*10+i)">编辑</td>
+            <!-- <td>
+              <a>Action 一 {{ data.name }}</a>
+              <nz-divider nzType="vertical"></nz-divider>
+              <a>Delete</a>
+            </td> -->
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+    <div class="box-none" [ngClass]="{'box-block': type=='2'}">
+      1111111111111
+    </div>
+    <nz-modal [(nzVisible)]="isVisible" nzClosable="false" nzTitle="录入成绩" [nzOkDisabled]="!validateForm.valid"
+    (nzOnCancel)="handleCancel()" (nzOnOk)="submitForm()">
+      <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <nz-form-item>
+          <nz-form-label [nzSpan]="6">第一次作业</nz-form-label>
+          <nz-form-control [nzSpan]="14" [nzErrorTip]="ScoreErrorTpl">
+            <input nz-input formControlName="homeworkOne" placeholder="请输入第一次作业成绩"/>
+            <ng-template #ScoreErrorTpl let-control>
+              <ng-container *ngIf="control.hasError('maxLength')">
+                请输入0-100之间的数字
+              </ng-container>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSpan]="6">第二次作业</nz-form-label>
+          <nz-form-control [nzSpan]="14" [nzErrorTip]="ScoreErrorTpl">
+            <input nz-input formControlName="homeworkTwo" placeholder="请输入第二次作业成绩" />
+            <ng-template #ScoreErrorTpl let-control>
+              <ng-container *ngIf="control.hasError('maxLength')">
+                请输入0-100之间的数字
+              </ng-container>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSpan]="6">第三次作业</nz-form-label>
+          <nz-form-control [nzSpan]="14" [nzErrorTip]="ScoreErrorTpl">
+            <input nz-input formControlName="homeworkThree" placeholder="请输入第三次作业成绩" />
+            <ng-template #ScoreErrorTpl let-control>
+              <ng-container *ngIf="control.hasError('maxLength')">
+                请输入0-100之间的数字
+              </ng-container>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSpan]="6">大作业</nz-form-label>
+          <nz-form-control [nzSpan]="14" [nzErrorTip]="ScoreErrorTpl">
+            <input nz-input formControlName="homeworkBig" placeholder="请输入大作业成绩" />
+            <ng-template #ScoreErrorTpl let-control>
+              <ng-container *ngIf="control.hasError('maxLength')">
+                请输入0-100之间的数字
+              </ng-container>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+
+      </form>
+    </nz-modal>
+  </div>
+</div>
+

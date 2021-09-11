@@ -1,0 +1,58 @@
+[
+  {
+    "QuestionsId": 1,
+    "QuestionsTitle": "html中滚动条的代码是什么？如何设置html滚动条？",
+    "QuestionsTest": "今天我们介绍这个html滚动条标签是marquee.<marquee>标签，它是成对出现的标签，现在说说设置HTML滚动条：这时候我们看看marquee标签如何利用它的属性来实现html滚动条的。1.html marquee标签的behavior属性behavior属性的参数值为alternate、scroll、slide中的一个，分别表示文字来回滚动、单方向循环滚动、只滚动一次，需要注意的是:如果在<marquee>标签中同时出现了direction和behavior属性，那么scroll和slide的滚动方向将依照direction属性中参数的设置。0",
+    "QuestionsAuthor": "张家捃",
+    "QuestionsTime": "2020-5-13",
+    "QuestionsType": "1"
+  },
+  {
+    "QuestionsId": 2,
+    "QuestionsTitle": "CSS-界面滚动时不显示滚动条",
+    "QuestionsTest": "1、设置常规的滚动条：使用 overflow:auto。父元素需要设置一个高度，设置相对定位，这样子元素的高度大于父元素高度才能显示滚动条。如果父元素的高度完全由子元素撑开，界面上不会出现滚动条。设置overflow：auto 失效的主要问题：可能是这个div没有设置 100% 然后父元素清除浮动 (float：none; position: relative;)",
+    "QuestionsAuthor": "张家捃",
+    "QuestionsTime": "2020-5-13",
+    "QuestionsType": "2"
+  },
+  {
+    "QuestionsId": 3,
+    "QuestionsTitle": "3",
+    "QuestionsTest": "",
+    "QuestionsAuthor": "张家捃",
+    "QuestionsTime": "2020-5-13",
+    "QuestionsType": "3"
+  },
+  {
+    "QuestionsId": 4,
+    "QuestionsTitle": "4",
+    "QuestionsTest": "",
+    "QuestionsAuthor": "张家捃",
+    "QuestionsTime": "2020-5-13",
+    "QuestionsType": "4"
+  },
+  {
+    "QuestionsId": 5,
+    "QuestionsTitle": "5？",
+    "QuestionsTest": "",
+    "QuestionsAuthor": "张家捃",
+    "QuestionsTime": "2020-5-13",
+    "QuestionsType": "5"
+  },
+  {
+    "QuestionsId": 6,
+    "QuestionsTitle": "6",
+    "QuestionsTest": "",
+    "QuestionsAuthor": "张家捃",
+    "QuestionsTime": "2020-5-13",
+    "QuestionsType": "6"
+  },
+  {
+    "QuestionsId": 7,
+    "QuestionsTitle": "7",
+    "QuestionsTest": "",
+    "QuestionsAuthor": "张家捃",
+    "QuestionsTime": "2020-5-13",
+    "QuestionsType": "7"
+  }
+]

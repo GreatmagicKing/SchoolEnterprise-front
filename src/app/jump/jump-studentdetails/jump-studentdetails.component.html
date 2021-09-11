@@ -1,0 +1,98 @@
+<div nz-row>
+  <div nz-col nzSpan="4">
+    <ul nz-menu nzMode="inline">
+      <li nz-menu-item class="text-center" (click)="showTable('1')">作业成绩</li>
+      <li nz-menu-item class="text-center" (click)="showTable('2')">测试成绩</li>
+      <li nz-menu-item class="text-center" (click)="showTable('3')">提问问题</li>
+      <li nz-menu-item class="text-center" (click)="showTable('4')">回答问题</li>
+    </ul>
+  </div>
+  <div nz-col nzSpan="20">
+    <div class="box-none" [ngClass]="{'box-block': type=='1'}" >
+      <nz-table  [nzData]="score"  >
+        <thead>
+          <tr>
+            <th nzAlign="center">课程</th>
+            <th nzAlign="center">作业1</th>
+            <th nzAlign="center">作业2</th>
+            <th nzAlign="center">作业3</th>
+            <th nzAlign="center">大作业</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let data of score ; let i = index;" >
+            <td nzAlign="center" >{{ data.coursesName }}</td>
+            <td nzAlign="center" >{{ data.homeWorkOne }}</td>
+            <td nzAlign="center" >{{ data.homeWorkTwo }}</td>
+            <td nzAlign="center" >{{ data.homeWorkThree }}</td>
+            <td nzAlign="center" >{{ data.homeWorkBig }}</td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+    <div class="box-none" [ngClass]="{'box-block': type=='2'}">
+      <nz-table  [nzData]="score"  >
+        <thead>
+          <tr>
+            <th nzAlign="center">课程</th>
+            <th nzAlign="center">测试1</th>
+            <th nzAlign="center">测试2</th>
+            <th nzAlign="center">测试3</th>
+            <th nzAlign="center">最终测试</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let data of score ; let i = index;" >
+            <td nzAlign="center" >{{ data.coursesName }}</td>
+            <td nzAlign="center" >{{ data.testOne }}</td>
+            <td nzAlign="center" >{{ data.testTwo }}</td>
+            <td nzAlign="center" >{{ data.testThree }}</td>
+            <td nzAlign="center" >{{ data.testBig }}</td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+    <div class="box-none" [ngClass]="{'box-block': type=='3'}">
+      <div *ngFor="let item of questions">
+        <div nz-row class="questions-box">
+          <div nz-col nzSpan="12">
+            <h4 (click)="jumpQuestions(item.questionsId)">{{item.questionsTitle}}</h4>
+          </div>
+          <div nz-col nzSpan="12">
+            <div nz-row>
+              <div nz-col nzSpan="8"></div>
+              <div nz-col nzSpan="4" class="center">{{item.questionsAuthor}}</div>
+              <div nz-col nzSpan="12" class="center">{{item.questionsTime}}</div>
+            </div>
+          </div>
+          <div nz-col nzSpan="24">
+            <p>{{item.questionsData}}</p>
+          </div>
+          <nz-divider></nz-divider>
+        </div>
+      </div>
+    </div>
+    <div class="box-none" [ngClass]="{'box-block': type=='4'}">
+      <div *ngFor="let item of answer">
+        <div nz-row class="questions-box">
+          <div nz-col nzSpan="12">
+            <h4 (click)="jumpQuestions(item.questionsId)">{{item.questionsTitle}}</h4>
+          </div>
+          <div nz-col nzSpan="12">
+            <div nz-row>
+              <div nz-col nzSpan="8"></div>
+              <div nz-col nzSpan="4" class="center">{{item.questionsAuthor}}</div>
+              <div nz-col nzSpan="12" class="center">{{item.questionsTime}}</div>
+            </div>
+          </div>
+          <div nz-col nzSpan="24">
+            <p>{{item.questionsData}}</p>
+          </div>
+          <nz-divider></nz-divider>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

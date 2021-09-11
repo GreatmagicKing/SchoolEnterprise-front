@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <ul class="nav flex-column">
+        <li class="nav-item" [ngClass]="{'tag-active': type=='1'}">
+          <a class="nav-link" (click)="showGrade('1')">作业成绩</a>
+        </li>
+        <li class="nav-item" [ngClass]="{'tag-active': type=='2'}">
+          <a class="nav-link" (click)="showGrade('2')">测试成绩</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-10">
+      <table class="table" #homeworkGrade>
+        <thead>
+          <tr class="table-primary">
+            <th scope="col">课程</th>
+            <th scope="col">作业1</th>
+            <th scope="col">作业2</th>
+            <th scope="col">作业3</th>
+            <th scope="col">大作业</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of score">
+            <th scope="row" >{{item.coursesName}}</th>
+            <td>{{item.homeWorkOne}}</td>
+            <td>{{item.homeWorkTwo}}</td>
+            <td>{{item.homeWorkThree}}</td>
+            <td>{{item.homeWorkBig}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table" #testGrade>
+        <thead>
+          <tr class="table-success">
+            <th scope="col">课程</th>
+            <th scope="col">测试1</th>
+            <th scope="col">测试2</th>
+            <th scope="col">测试3</th>
+            <th scope="col">最终测试</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of score">
+            <th scope="row">{{item.coursesName}}</th>
+            <td>{{item.testOne}}</td>
+            <td>{{item.testTwo}}</td>
+            <td>{{item.testThree}}</td>
+            <td>{{item.testBig}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
